@@ -19,3 +19,9 @@
   - recursion
   - mutual recursion
   - currying
+- write a simple switch
+
+3. Handling null/undefined
+
+- option
+- pattern matching
