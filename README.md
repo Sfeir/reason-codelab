@@ -8,3 +8,14 @@
 - run compiled JS: `node src/Demo.bs.js`
 
   - js in repository yes or no ? (no)
+
+2. Discover basic ReasonML syntax
+
+- syntax similarities
+- everything is an expression!
+  - let bindings, block scope
+- basic types, type inference
+- functions
+  - recursion
+  - mutual recursion
+  - currying
