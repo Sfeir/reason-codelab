@@ -12,8 +12,11 @@
 2. Discover basic ReasonML syntax
 
 - syntax similarities
+  - let binding, values, lambda functions
+  -
 - everything is an expression!
-  - let bindings, block scope
+  - block scope
+  - if/else
 - basic types, type inference
 - functions
   - recursion
@@ -25,3 +28,4 @@
 
 - option
 - pattern matching
+- exceptions
