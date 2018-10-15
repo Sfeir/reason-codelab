@@ -16,19 +16,20 @@ let parse = token =>
     }
   };
 
+let calc = (stack, input) =>
+  switch (parse(input), stack) {
+  | (Num(n), stack) => [n, ...stack]
+  | (Add, [a, b, ...t]) => [a +. b, ...t]
+  | (Mult, [a, b, ...t]) => [a *. b, ...t]
+  | (_, stack) => stack
+  };
+
 let make = () => {
   let stack = ref([]);
 
   input => {
-    let newStack =
-      switch (parse(input), stack^) {
-      | (Num(n), stack) => [n, ...stack]
-      | (Add, [a, b, ...t]) => [a +. b, ...t]
-      | (Mult, [a, b, ...t]) => [a *. b, ...t]
-      | (_, stack) => stack
-      };
-
+    let newStack = calc(stack^, input);
     stack := newStack;
-    List.(newStack->reverse->map(string_of_float)->toArray);
+    List.(newStack->reverse->map(string_of_float)) |> String.concat(" ");
   };
 };

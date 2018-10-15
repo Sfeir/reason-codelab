@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 });
 
 const calc = make();
-
 const ask = prompt =>
-  rl.question(prompt && prompt + " ", input => ask(calc(input).join(" ")));
+  rl.question(prompt && prompt + " ", input => ask(calc(input)));
+
 ask("");
