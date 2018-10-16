@@ -1,0 +1,7 @@
+{
+  "reason_language_server.dependencies_codelens": false,
+  "reason_language_server.opens_codelens": false,
+  "reason_language_server.per_value_codelens": true,
+  "editor.fontFamily": "Menlo",
+  "editor.fontLigatures": false
+}
