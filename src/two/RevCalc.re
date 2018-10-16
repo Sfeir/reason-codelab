@@ -1,3 +1,3 @@
-let calc = s => s ++ "?";
+let calc = s => "???\n" ++ s;
 
 let make = () => calc;
