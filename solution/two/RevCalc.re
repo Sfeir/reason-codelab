@@ -3,7 +3,10 @@ open Belt;
 type entry =
   | Add
   | Mult
+  | Vol
+  | Fact
   | Num(float)
+  | Clear
   | Unknown(string);
 
 let parse = token =>
@@ -12,6 +15,9 @@ let parse = token =>
     switch (token) {
     | "+" => Add
     | "*" => Mult
+    | "vol" => Vol
+    | "!" => Fact
+    | "c" => Clear
     | s => Unknown(s)
     }
   };
@@ -22,6 +28,10 @@ let calc = (stack, input) =>
     | (Num(n), stack) => Ok([n, ...stack])
     | (Add, [a, b, ...t]) => Ok([a +. b, ...t])
     | (Mult, [a, b, ...t]) => Ok([a *. b, ...t])
+    | (Vol, [a, ...t]) => Ok([Operation.volume(a), ...t])
+    | (Fact, [a, ...t]) =>
+      Ok([float_of_int(Operation.fact(int_of_float(a))), ...t])
+    | (Clear, _) => Ok([])
     | (Unknown(s), _) => Error("I don't understand " ++ s)
     | _ => Error("Not enough params")
     }
