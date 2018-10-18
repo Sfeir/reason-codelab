@@ -14,14 +14,15 @@ module Response = {
   [@bs.send] external sendStatus: (t, int) => unit = "";
 };
 
-type middleware = (Request.t, Response.t, unit => unit) => unit;
+type handler = (Request.t, Response.t) => unit;
+type middleware;
 
 module App = {
   type t;
 
   [@bs.send] external use: (t, middleware) => t = "";
-  [@bs.send] external get: (t, string, middleware) => t = "";
-  [@bs.send] external post: (t, string, middleware) => t = "";
+  [@bs.send] external get: (t, string, handler) => t = "";
+  [@bs.send] external post: (t, string, handler) => t = "";
   [@bs.send] external listen: (t, int, unit => unit) => unit = "";
 };
 

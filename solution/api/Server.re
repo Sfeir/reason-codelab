@@ -1,11 +1,11 @@
 open Express;
 
-let logUnknownGet = (req, res, _) => {
+let logUnknownGet = (req, res) => {
   Js.log2("unknown GET:", Request.path(req));
   Response.sendStatus(res, 404);
 };
 
-let logUnknownPost = (req, res, _) => {
+let logUnknownPost = (req, res) => {
   Js.log2("unknown POST:", Request.path(req));
   Js.log(Request.json(req));
   Response.sendStatus(res, 404);
