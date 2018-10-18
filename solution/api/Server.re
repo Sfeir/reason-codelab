@@ -18,7 +18,7 @@ let startServer = port => {
     app
     ->use(json())
     ->get("/", Core.sayHelloWorld)
-    ->get("/vol/*", Core.volume)
+    ->get("/vol/:rad", Core.volume)
     ->get("*", logUnknownGet)
     ->post("/fact", Core.factorial)
     ->post("*", logUnknownPost)

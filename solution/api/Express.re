@@ -3,6 +3,7 @@ module Request = {
 
   [@bs.get] external path: t => string = "";
   [@bs.get] external json: t => Js.Json.t = "body";
+  [@bs.get] external params: t => Js.Dict.t(string) = "";
 };
 
 module Response = {

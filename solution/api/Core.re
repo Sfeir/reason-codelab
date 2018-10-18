@@ -2,9 +2,9 @@ open Belt;
 open Express;
 open Express.Response;
 
-let tryParseParam = (cast, req) => {
-  let pathSegments = Js.String.split("/", Request.path(req));
-  try (pathSegments->Array.getExn(2)->cast->Result.Ok) {
+let tryParseParam = (key, cast, req) => {
+  let params = Request.params(req);
+  try (params->Js.Dict.unsafeGet(key)->cast->Result.Ok) {
   | Failure(err) => Result.Error(err)
   };
 };
@@ -19,7 +19,7 @@ let sayHelloWorld = (_, res, _) => sendText(res, "Hello World!");
 let volume = (req, res, _) => {
   let response =
     Result.(
-      tryParseParam(float_of_string, req)
+      tryParseParam("rad", float_of_string, req)
       ->map(Operation.volume)
       ->map(string_of_float)
     );
