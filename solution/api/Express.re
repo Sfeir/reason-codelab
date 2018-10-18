@@ -12,6 +12,7 @@ module Response = {
   [@bs.send] external sendText: (t, string) => unit = "send";
   [@bs.send] external sendJson: (t, Js.Json.t) => unit = "json";
   [@bs.send] external sendStatus: (t, int) => unit = "";
+  [@bs.send] external status: (t, int) => t = "";
 };
 
 type handler = (Request.t, Response.t) => unit;

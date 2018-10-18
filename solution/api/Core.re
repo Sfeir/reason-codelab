@@ -23,7 +23,7 @@ let makeHandler = (decode, calc, encode, req, res) => {
   switch (response) {
   | Ok(Text(s)) => sendText(res, s)
   | Ok(Json(j)) => sendJson(res, j)
-  | Error(_) => sendStatus(res, 400)
+  | Error(err) => res->status(400)->sendText(err)
   };
 };
 
